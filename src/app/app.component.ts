@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Edukacja';
+  path: any = '../assets/img/background1.jpg';
   constructor( private router: Router) {
 
   }
