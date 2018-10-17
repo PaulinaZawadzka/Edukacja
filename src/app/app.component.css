@@ -1,0 +1,47 @@
+h2
+{
+  padding: 30px;
+}
+
+.h2__span
+{
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.h2__span--pink
+{
+    color: #f38ab6;
+ }
+
+.h2__span--green
+{
+  color: #d4e52e;
+}
+img
+
+  { border-top: 2px solid #f38ab6;
+    border-bottom: 2px solid #f38ab6;}
+
+
+
+.nav-link
+{
+  background-color: #d4e52e;
+  widows: 50px;
+  margin: 20px 30px;
+  text-align: center;
+  font-weight: 700;
+  color: black;
+  }
+  .nav-link:hover
+  {
+    background-color: #d3e52eb6;
+    color: black;
+
+  }
+  .nav-pills .nav-link.active
+  {
+    background-color: #f38ab6;
+    color: white;
+  }

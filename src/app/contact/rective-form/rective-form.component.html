@@ -1,0 +1,53 @@
+<div class=" conteiner justify-content-center">
+<form class=" row justify-content-center" [formGroup]='contactForm' (ngSubmit)="onSubmit()">
+  <div class = "form-col-style col-4" >
+
+    <label for="topic">Temat:</label>
+    <input  type="text" id="topic" name="topic" formControlName="topic">
+    <div *ngIf="contactForm.get('topic').invalid && contactForm.get('topic').dirty">Pole wymagane</div>
+
+
+    <label for="message">Wiadomość:</label>
+    <textarea  rows="4" cols="50" id="message" name="message" formControlName="message" ></textarea>
+    <div *ngIf="contactForm.get('message').invalid && contactForm.get('message').dirty">Pole wymagane</div>
+    <div *ngIf="contactForm.get('message').errors && contactForm.get('message').errors.minlength">Za krotka wiadomość</div>
+
+    <label for="name">Name:</label>
+    <input  type="text" id="name" name="name" formControlName="name">
+    <div *ngIf="contactForm.get('name').invalid && contactForm.get('name').dirty">Pole wymagane</div>
+
+    <label for="email">E-mail:</label>
+    <input   type="email" id="email" name="email" formControlName="email" email>
+    <div *ngIf="contactForm.get('email').invalid && contactForm.get('email').dirty">Pole wymagane</div>
+    <div *ngIf="contactForm.get('email').errors && contactForm.get('email').errors.email &&
+    contactForm.get('email').dirty ">Zły adres e-mail</div>
+  </div>
+  <div class = " form-col-style col-4">
+    <label for="toys">Ktore z wymienionych zabawek do nauki programowania są Ci znane?</label>
+    <select   name="toys" id="toys" formControlName="toys">
+      <option *ngFor="let toys of toys" value="toys">{{toys}}</option>
+    </select>
+
+    <div>
+      <label for="like">Czy Twoje dziecko lubi informatykę?</label>
+      <input  [value]="true"  type="radio" name="like" id="like" formControlName="like"> Tak
+      <input  [value]="false" type="radio" name="like" id="like" formControlName="like"> Nie
+    </div>
+
+    <label for="questions">Czego jeszcze chcesz nauczyć swoje dziecko?</label>
+    <div formArrayName="questions">
+      <div *ngFor="let question of contactForm.get('questions')['controls']; let i = index">
+       {{i+1}} <input type="text" [formControlName]="i">
+      </div>
+      <div *ngIf="contactForm.get('questions').errors && contactForm.get('questions').errors['forbbidentoy']">Zakazany kurs</div>
+      <button type="button" (click)='addQuestion()'>Dodaj</button>
+    </div>
+  </div>
+
+  <div class=" col-6">
+  <button type="submit" [disabled]="contactForm.invalid" >Wyslij</button>
+  <button type="button" (click)="onReset()" >reset</button>
+</div>
+
+</form>
+</div>
