@@ -1,0 +1,50 @@
+.inline-grid
+{
+  display: inline-grid;
+
+}
+
+label
+{margin-bottom:0;
+padding-bottom: 0;
+}
+
+.radio-box
+{
+  margin-bottom: 20px;
+}
+
+input, textarea, select
+{
+border: 1.5px solid #f38ab6;
+margin-bottom: 20px;
+
+}
+
+input:active, textarea:active, select:active,
+input:focus, textarea:focus, select:focus
+{
+  outline: 3px solid #fdadcfe8;
+ }
+
+ .form-btn
+ {
+  background-color: #d4e52e;
+  border: 2px solid #d4e52e;
+  border-radius: 5px;
+  margin-bottom: 50px;
+
+ }
+
+ .form-btn:active, .form-btn:focus, .form-btn:hover
+{ background-color: #f38ab6;
+  border: 2px solid #f38ab6;
+    color: white;
+  outline: none; }
+
+  .add-btn
+  {
+    background: #fff;
+    border: 2px solid #f38ab6;
+  }
+

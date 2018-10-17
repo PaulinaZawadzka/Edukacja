@@ -11,7 +11,7 @@ export class RectiveFormComponent implements OnInit {
   contactForm: FormGroup;
 
   message = new ReactiveMessage();
-  toys = ['LEGO mindstorn', 'Dash i Dot', 'Scottie Go', 'BeCreo'];
+  toys = ['LEGO mindstorm', 'Dash i Dot', 'Scottie Go', 'BeCreo', 'żadne z powyższych'];
 
 
   constructor() { }
@@ -47,13 +47,13 @@ this.message.topic = this.contactForm.value.topic; // this.contactForm.get('topi
 this.message.message = this.contactForm.value.message;
 this.message.name = this.contactForm.value.name;
 this.message.email = this.contactForm.value.email;
-this.message.course = this.contactForm.value.course;
+this.message.toys = this.contactForm.value.toys;
 this.message.like = this.contactForm.value.like;
 }
 
   onReset() {
 this.contactForm.reset({
-  topic: 'Fajny kurs',
+  topic: 'Fajne materiały',
   toy: this.toys[2]
 });
   }
@@ -66,7 +66,7 @@ class ReactiveMessage {
     public message?: string,
     public name?: string,
     public email?: string,
-    public course = 'Dash i Dot',
+    public toys = 'Dash i Dot',
     public like?: boolean
      ) {}
 

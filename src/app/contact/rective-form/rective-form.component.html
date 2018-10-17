@@ -1,6 +1,7 @@
 <div class=" conteiner justify-content-center">
-<form class=" row justify-content-center" [formGroup]='contactForm' (ngSubmit)="onSubmit()">
-  <div class = "form-col-style col-4" >
+<form  [formGroup]='contactForm' (ngSubmit)="onSubmit()">
+  <div class=" row justify-content-center">
+  <div class = "col-4 inline-grid">
 
     <label for="topic">Temat:</label>
     <input  type="text" id="topic" name="topic" formControlName="topic">
@@ -12,7 +13,7 @@
     <div *ngIf="contactForm.get('message').invalid && contactForm.get('message').dirty">Pole wymagane</div>
     <div *ngIf="contactForm.get('message').errors && contactForm.get('message').errors.minlength">Za krotka wiadomość</div>
 
-    <label for="name">Name:</label>
+    <label for="name">Imię:</label>
     <input  type="text" id="name" name="name" formControlName="name">
     <div *ngIf="contactForm.get('name').invalid && contactForm.get('name').dirty">Pole wymagane</div>
 
@@ -22,31 +23,38 @@
     <div *ngIf="contactForm.get('email').errors && contactForm.get('email').errors.email &&
     contactForm.get('email').dirty ">Zły adres e-mail</div>
   </div>
-  <div class = " form-col-style col-4">
-    <label for="toys">Ktore z wymienionych zabawek do nauki programowania są Ci znane?</label>
-    <select   name="toys" id="toys" formControlName="toys">
-      <option *ngFor="let toys of toys" value="toys">{{toys}}</option>
+  <div class = "inline-grid col-4">
+    <label for="toys">Ktore z wymienionych zabawek do nauki programowania Twoje dziecko lubi najbardziej?</label>
+    <select class="selectpicker" data-style="btn-success"  name="toys" id="toys" formControlName="toys">
+      <option  *ngFor="let toys of toys" value="toys">{{toys}}</option>
     </select>
 
-    <div>
-      <label for="like">Czy Twoje dziecko lubi informatykę?</label>
-      <input  [value]="true"  type="radio" name="like" id="like" formControlName="like"> Tak
-      <input  [value]="false" type="radio" name="like" id="like" formControlName="like"> Nie
+    <div class="radio-box" >
+      <label class="form-check-label" for="like">Czy Twoje dziecko lubi informatykę?</label>
+      <div class="form-check">
+      <input class="form-check-input"  [value]="true"  type="radio" name="like" id="like" formControlName="like">
+      <label class="form-check-label" for="like">Tak</label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input"  [value]="false"  type="radio" name="like" id="like" formControlName="like">
+    <label class="form-check-label" for="like">Nie</label>
+  </div>
+
     </div>
 
     <label for="questions">Czego jeszcze chcesz nauczyć swoje dziecko?</label>
-    <div formArrayName="questions">
+    <div formArrayName="questions" >
       <div *ngFor="let question of contactForm.get('questions')['controls']; let i = index">
        {{i+1}} <input type="text" [formControlName]="i">
       </div>
       <div *ngIf="contactForm.get('questions').errors && contactForm.get('questions').errors['forbbidentoy']">Zakazany kurs</div>
-      <button type="button" (click)='addQuestion()'>Dodaj</button>
+      <button class="form-btn add-btn col-4 offset-8" type="button" (click)='addQuestion()'>Dodaj</button>
     </div>
   </div>
-
-  <div class=" col-6">
-  <button type="submit" [disabled]="contactForm.invalid" >Wyslij</button>
-  <button type="button" (click)="onReset()" >reset</button>
+</div>
+  <div class=" row justify-content-center">
+  <button class=" col-2  form-btn" type="submit" [disabled]="contactForm.invalid" >Wyslij</button>
+  <button class=" col-2 offset-2 form-btn" type="button" (click)="onReset()" >reset</button>
 </div>
 
 </form>
